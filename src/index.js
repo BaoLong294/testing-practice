@@ -57,3 +57,19 @@ export function caesarCipher(string, shift) {
 
   return newString;
 }
+
+export function analyzeArray(array) {
+  if (array.length == 0) return 'Empty array';
+
+  let min = array[0];
+  let max = array[0];
+  let sum = array[0];
+
+  for (let i = 1; i < array.length; i++) {
+    sum += array[i];
+    if (min > array[i]) min = array[i];
+    if (max < array[i]) max = array[i];
+  }
+
+  return { average: sum / array.length, min, max, length: array.length };
+}
