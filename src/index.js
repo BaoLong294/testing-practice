@@ -31,3 +31,29 @@ export const calculator = {
     return a / b;
   },
 };
+
+export function caesarCipher(string, shift) {
+  let newString = '';
+
+  for (let i = 0; i < string.length; i++) {
+    const code = string.charCodeAt(i);
+
+    if (code >= 65 && code <= 90) {
+      let newCode = code + shift;
+      if (newCode > 90) {
+        newCode = 65 + (newCode - 91);
+      }
+      newString += String.fromCharCode(newCode);
+    } else if (code >= 97 && code <= 122) {
+      let newCode = code + shift;
+      if (newCode > 122) {
+        newCode = 97 + (newCode - 123);
+      }
+      newString += String.fromCharCode(newCode);
+    } else {
+      newString += string[i];
+    }
+  }
+
+  return newString;
+}
